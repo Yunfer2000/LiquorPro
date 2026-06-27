@@ -44,21 +44,33 @@ model Categoria {
 }
 
 model Producto {
-  id           Int     @id @default(autoincrement())
-  nombre       String  @db.VarChar(150)
-  descripcion  String? @db.VarChar(255)
-  marca        String? @db.VarChar(100)
-  precioCompra Decimal @db.Decimal(10, 2)
-  precioVenta  Decimal @db.Decimal(10, 2)
-  stock        Int     @default(0)
-  stockMinimo  Int     @default(5)
-  estado       Boolean @default(true)
+  id            Int       @id @default(autoincrement())
+  nombre        String    @db.VarChar(150)
+  descripcion   String?   @db.VarChar(255)
+  marca         String?   @db.VarChar(100)
+  precioCompra  Decimal   @db.Decimal(10, 2)
+  precioVenta   Decimal   @db.Decimal(10, 2)
+  stock         Int       @default(0)
+  stockMinimo   Int       @default(5)
+  estado        Boolean   @default(true)
+  categoriaId   Int
+  categoria     Categoria @relation(fields: [categoriaId], references: [id])
+  creadoEn      DateTime  @default(now())
+  actualizadoEn DateTime  @updatedAt
 
-  categoriaId Int
-  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+  @@map("productos")
+}
 
+model Proveedor {
+  id            Int      @id @default(autoincrement())
+  nombre        String   @db.VarChar(150)
+  ruc           String?  @unique @db.VarChar(20)
+  telefono      String?  @db.VarChar(20)
+  email         String?  @db.VarChar(100)
+  direccion     String?  @db.VarChar(255)
+  estado        Boolean  @default(true)
   creadoEn      DateTime @default(now())
   actualizadoEn DateTime @updatedAt
 
-  @@map("productos")
+  @@map("proveedores")
 }
