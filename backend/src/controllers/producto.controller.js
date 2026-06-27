@@ -16,22 +16,6 @@ const listarCategorias = async (req, res) => {
   }
 };
 
-const crearProducto = async (req, res) => {
-  try {
-    const producto = await productoService.crearProducto(req.body);
-
-    return res.status(201).json({
-      success: true,
-      data: producto
-    });
-  } catch (error) {
-    return res.status(400).json({
-      success: false,
-      message: error.message
-    });
-  }
-};
-
 const listarProductos = async (req, res) => {
   try {
     const productos = await productoService.listarProductos();
@@ -48,8 +32,78 @@ const listarProductos = async (req, res) => {
   }
 };
 
+const obtenerProductoPorId = async (req, res) => {
+  try {
+    const producto = await productoService.obtenerProductoPorId(req.params.id);
+
+    return res.json({
+      success: true,
+      data: producto
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+const crearProducto = async (req, res) => {
+  try {
+    const producto = await productoService.crearProducto(req.body);
+
+    return res.status(201).json({
+      success: true,
+      data: producto
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+const actualizarProducto = async (req, res) => {
+  try {
+    const producto = await productoService.actualizarProducto(
+      req.params.id,
+      req.body
+    );
+
+    return res.json({
+      success: true,
+      data: producto
+    });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
+const eliminarProducto = async (req, res) => {
+  try {
+    await productoService.eliminarProducto(req.params.id);
+
+    return res.json({
+      success: true,
+      message: 'Producto eliminado correctamente'
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: error.message
+    });
+  }
+};
+
 module.exports = {
   listarCategorias,
+  listarProductos,
+  obtenerProductoPorId,
   crearProducto,
-  listarProductos
+  actualizarProducto,
+  eliminarProducto
 };
