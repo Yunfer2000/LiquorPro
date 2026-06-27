@@ -74,3 +74,18 @@ model Proveedor {
 
   @@map("proveedores")
 }
+
+model Cliente {
+  id            Int      @id @default(autoincrement())
+  nombres       String   @db.VarChar(100)
+  apellidos     String   @db.VarChar(100)
+  dni           String?  @unique @db.VarChar(8)
+  telefono      String?  @db.VarChar(20)
+  email         String?  @db.VarChar(100)
+  direccion     String?  @db.VarChar(255)
+  estado        Boolean  @default(true)
+  creadoEn      DateTime @default(now())
+  actualizadoEn DateTime @updatedAt
+
+  @@map("clientes")
+}
