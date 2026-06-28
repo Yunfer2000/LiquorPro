@@ -6,6 +6,7 @@ const productoRoutes = require('./routes/producto.routes');
 const proveedorRoutes = require('./routes/proveedor.routes');
 const clienteRoutes = require('./routes/cliente.routes');
 const compraRoutes = require('./routes/compra.routes');
+const ventaRoutes = require('./routes/venta.routes');
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use('/api/productos', productoRoutes);
 app.use('/api/proveedores', proveedorRoutes);
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/compras', compraRoutes);
+app.use('/api/ventas', ventaRoutes);
 
 module.exports = app;

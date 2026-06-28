@@ -56,6 +56,7 @@ model Producto {
   categoriaId    Int
   categoria      Categoria       @relation(fields: [categoriaId], references: [id])
   detalleCompras DetalleCompra[]
+  detalleVentas  DetalleVenta[]
   creadoEn       DateTime        @default(now())
   actualizadoEn  DateTime        @updatedAt
 
@@ -91,6 +92,33 @@ model Compra {
   @@map("compras")
 }
 
+model Venta {
+  id            Int            @id @default(autoincrement())
+  clienteId     Int
+  cliente       Cliente        @relation(fields: [clienteId], references: [id])
+  fecha         DateTime       @default(now())
+  total         Decimal        @db.Decimal(10, 2)
+  estado        Boolean        @default(true)
+  detalles      DetalleVenta[]
+  creadoEn      DateTime       @default(now())
+  actualizadoEn DateTime       @updatedAt
+
+  @@map("ventas")
+}
+
+model DetalleVenta {
+  id             Int      @id @default(autoincrement())
+  ventaId        Int
+  venta          Venta    @relation(fields: [ventaId], references: [id])
+  productoId     Int
+  producto       Producto @relation(fields: [productoId], references: [id])
+  cantidad       Int
+  precioUnitario Decimal  @db.Decimal(10, 2)
+  subtotal       Decimal  @db.Decimal(10, 2)
+
+  @@map("detalle_ventas")
+}
+
 model DetalleCompra {
   id             Int      @id @default(autoincrement())
   compraId       Int
@@ -113,6 +141,7 @@ model Cliente {
   email         String?  @db.VarChar(100)
   direccion     String?  @db.VarChar(255)
   estado        Boolean  @default(true)
+  ventas        Venta[]
   creadoEn      DateTime @default(now())
   actualizadoEn DateTime @updatedAt
 
