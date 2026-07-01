@@ -16,7 +16,8 @@ const menuItems = [
   { path: '/ventas', label: 'Ventas', icon: <FaCashRegister /> },
   { path: '/clientes', label: 'Clientes', icon: <FaUsers /> },
   { path: '/proveedores', label: 'Proveedores', icon: <FaTruck /> },
-  { path: '/reportes', label: 'Reportes', icon: <FaFileAlt /> }
+  { path: '/reportes', label: 'Reportes', icon: <FaFileAlt /> },
+  { path: '/categorias', label: 'Categorías', icon: <FaBoxOpen /> }
 ];
 
 export default function Sidebar() {

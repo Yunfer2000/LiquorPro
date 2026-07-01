@@ -3,6 +3,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from '../pages/Dashboard';
 import Login from '../pages/Login';
 import Productos from '../pages/Productos';
+import Clientes from '../pages/Clientes';
+import Proveedores from '../pages/Proveedores';
+import Categorias from '../pages/Categorias';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token');
@@ -21,6 +24,33 @@ export default function AppRoutes() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        
+        <Route
+          path="/categorias"
+          element={
+            <PrivateRoute>
+              <Categorias />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/clientes"
+          element={
+            <PrivateRoute>
+              <Clientes />
+            </PrivateRoute>
+          }
+        />
+        
+        <Route
+          path="/proveedores"
+          element={
+            <PrivateRoute>
+              <Proveedores />
             </PrivateRoute>
           }
         />
