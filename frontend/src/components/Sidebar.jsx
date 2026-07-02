@@ -10,13 +10,13 @@ import {
 } from 'react-icons/fa';
 
 const menuItems = [
-  { path: '/', label: 'Dashboard', icon: <FaChartLine /> },
+  { path: '/', label: 'Panel', icon: <FaChartLine /> },
   { path: '/productos', label: 'Productos', icon: <FaBoxOpen /> },
   { path: '/compras', label: 'Compras', icon: <FaShoppingCart /> },
   { path: '/ventas', label: 'Ventas', icon: <FaCashRegister /> },
   { path: '/clientes', label: 'Clientes', icon: <FaUsers /> },
   { path: '/proveedores', label: 'Proveedores', icon: <FaTruck /> },
-  { path: '/reportes', label: 'Reportes', icon: <FaFileAlt /> },
+  { path: '/reportes', label: 'Informes', icon: <FaFileAlt /> },
   { path: '/categorias', label: 'Categorías', icon: <FaBoxOpen /> }
 ];
 

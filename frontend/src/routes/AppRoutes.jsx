@@ -6,6 +6,7 @@ import Productos from '../pages/Productos';
 import Clientes from '../pages/Clientes';
 import Proveedores from '../pages/Proveedores';
 import Categorias from '../pages/Categorias';
+import Compras from '../pages/Compras';
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token');
@@ -28,6 +29,15 @@ export default function AppRoutes() {
           }
         />
         
+        <Route
+          path="/compras"
+          element={
+            <PrivateRoute>
+              <Compras />
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/categorias"
           element={
