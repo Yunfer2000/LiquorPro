@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import DashboardLayout from '../layouts/DashboardLayout';
 import Loading from '../components/Loading';
 import { generarReportePDF } from '../utils/pdfReportes';
+import { generarReporteExcel } from '../utils/excelReportes';
 
 import {
   obtenerReporteVentas,
@@ -63,12 +64,23 @@ export default function Reportes() {
     </p>
   </div>
 
+  <div className="flex gap-3">
+
   <button
     onClick={() => generarReportePDF({ ventas, compras, inventario })}
     className="bg-red-600 hover:bg-red-700 text-white px-5 py-3 rounded-lg font-semibold"
   >
     Exportar PDF
   </button>
+
+  <button
+    onClick={() => generarReporteExcel({ ventas, compras, inventario })}
+    className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-semibold"
+  >
+    Exportar Excel
+  </button>
+
+</div>
 </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
