@@ -9,6 +9,7 @@ const compraRoutes = require('./routes/compra.routes');
 const ventaRoutes = require('./routes/venta.routes');
 const dashboardRoutes = require('./routes/dashboard.routes');
 const reporteRoutes = require('./routes/reporte.routes');
+const categoriaRoutes = require('./routes/categoria.routes');
 
 const app = express();
 
@@ -30,5 +31,6 @@ app.use('/api/compras', compraRoutes);
 app.use('/api/ventas', ventaRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/reportes', reporteRoutes);
+app.use('/api/categorias', categoriaRoutes);
 
 module.exports = app;

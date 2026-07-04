@@ -1,18 +1,21 @@
 import api from '../api/axios';
 
 export const obtenerCategorias = async () => {
-  const response = await api.get('/productos/categorias');
+  const response = await api.get('/categorias');
   return response.data.data;
 };
 
-export const crearCategoria = async () => {
-  throw new Error('El backend aún no tiene endpoint para crear categorías');
+export const crearCategoria = async (categoria) => {
+  const response = await api.post('/categorias', categoria);
+  return response.data.data;
 };
 
-export const actualizarCategoria = async () => {
-  throw new Error('El backend aún no tiene endpoint para actualizar categorías');
+export const actualizarCategoria = async (id, categoria) => {
+  const response = await api.put(`/categorias/${id}`, categoria);
+  return response.data.data;
 };
 
-export const eliminarCategoria = async () => {
-  throw new Error('El backend aún no tiene endpoint para eliminar categorías');
+export const eliminarCategoria = async (id) => {
+  const response = await api.delete(`/categorias/${id}`);
+  return response.data;
 };
